@@ -1,3 +1,12 @@
-- task: DotNetCoreCLI@2
-  inputs:
-    command: 'build'
+trigger:
+- main
+
+pool:
+  vmImage: ubuntu-latest
+  
+variables:
+  buildConfiguration: 'Release'
+
+steps:
+  - script: dotnet build --configuration $(buildConfiguration)
+    displayName: 'Build'
